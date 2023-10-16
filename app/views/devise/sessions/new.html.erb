@@ -1,17 +1,19 @@
-<div class="bg-primary text-center py-6">
-  <h2 class="font-medium text-2xl capitalize text-white">Log In</h2>
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+<div class="bg-primary text-center py-6 flex justify-between items-center">
+   <%= link_to("javascript:history.back()", class: "text-white text-2xl px-4 py-2.5") do %>
+      <img class="h-6" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAAArklEQVR4nO3YQQrCQBBE0T6hRlFmoXcXFIyQI0T4MqtsMmurm3onSPEnkEmEWV3ACZiBBbhERkADVjZLFBjRfaLAiBU4RxbAdWfEF7hFFh6hwiVUuIQKl1DhEirwZ4cIXEIERUpMg0tRi0yAV/oR1YZMJY5W1/8/DV72e2SDx4jCZUThMqJwGVEuo8plVLmMqmpl2uBydowiY56R0c6Yd2TVjxPw6DWAw7+fxyw2P3RyW8aloQCoAAAAAElFTkSuQmCC">
+  <% end %>
+  <h2 class="font-medium text-2xl capitalize text-white">Login</h2>
+    <%= f.submit "Log in",  class: 'my-2 text-center text-white bg-primary px-4 rounded-[15px] hover:scale-105 transition-all' %>
 </div>
 <div class="flex flex-col justify-center items-center container pt-12 ">
 <div class="flex flex-col gap-0.5">
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'w-full my-2' %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'w-full my-2', placeholder: 'Email' %>
   </div>
 
   <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password", class: 'w-full my-2' %>
+    <%= f.password_field :password, autocomplete: "current-password", class: 'w-full my-2', placeholder: 'password' %>
   </div>
 
   <% if devise_mapping.rememberable? %>
@@ -21,11 +23,7 @@
     </div>
   <% end %>
 
-  <div class="actions">
-    <%= f.submit "Log in",  class: 'w-full my-2 text-center text-white bg-primary py-3 w-3/4 rounded-[15px] hover:scale-105 transition-all' %>
-  </div>
-<% end %>
 
-<%= render "devise/shared/links" %>
+<% end %>
 </div>
 </div>
