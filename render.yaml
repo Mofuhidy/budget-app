@@ -1,0 +1,18 @@
+databases:
+  - name: budget-beam
+    databaseName: budget_beam
+    user: budget_beam_user
+
+services:
+  - type: web
+    name: budget-beam
+    runtime: ruby
+    buildCommand: "./bin/render-build.sh"
+    startCommand: "bundle exec puma -C config/puma.rb"
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: budget_beam
+          property: connectionString
+      - key: RAILS_MASTER_KEY
+        sync: false
