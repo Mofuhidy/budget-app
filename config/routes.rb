@@ -1,14 +1,15 @@
 Rails.application.routes.draw do
-  get 'exchanges/index'
-  get 'exchanges/new'
-  get 'exchanges/create'
-  get 'categories/index'
-  get 'categories/home'
-  get 'categories/new'
-  get 'categories/create'
   devise_for :users
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+  authenticated :user do
+    root 'categories#home', as: :authenticated_root
+  end
+
+  unauthenticated do
+    root 'categories#index', as: :unauthenticated_root
+  end
+
+  resources :categories, only: %i[index new create destroy] do
+    resources :exchanges, only: %i[index new create]
+  end
 end
