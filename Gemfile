@@ -74,6 +74,6 @@ gem 'devise', '~> 4.9'
 
 gem 'rubocop', '>= 1.0', '< 2.0'
 
-gem "tailwindcss-rails", "~> 2.0"
+gem 'tailwindcss-rails', '~> 2.0'
 
-gem "font-awesome-sass", "~> 6.4.2"
+gem 'font-awesome-sass', '~> 6.4.2'
