@@ -9,7 +9,8 @@ Rails.application.routes.draw do
     root 'categories#index', as: :unauthenticated_root
   end
 
-  resources :categories, only: %i[index new create destroy] do
+  resources :categories, only: %i[index new home create destroy] do
+    get :home, on: :collection
     resources :exchanges, only: %i[index new create]
   end
 end
